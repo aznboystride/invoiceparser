@@ -1,13 +1,19 @@
-WORKER_FOLDER_PATH = "/Users/Pey/Documents/redline/Danny"
+DANNY_FOLDER_PATH = "/Users/Pey/Documents/redline/Danny"
 
 SAMPLE_FILE_PATH = "/Users/Pey/Documents/redline/Danny/sampleDanny.xlsx"
 
-SETTLEMENT_FILE_PATH = "/Users/Pey/Documents/redline/recent_invoice.xlsx"
+SETTLEMENT_FILE_PATH = "/Users/Pey/Documents/redline/recent_invoice.xls"
+
+RECENT_INVOICE_FILE_PATH = "/Users/Pey/Documents/redline/recent_invoice.xlsx"
 
 DEFAULT_RECEIVER = "4g63t.redline@gmail.com"
 
+DEFAULT_PERSON = "fritz bugay"
+
 DEFAULT_SENDER = "peynuri@yahoo.com"
 
-IMAP_YAHOO = "imap.mail.yahoo.com"
+YAHOO_SMTP_SERVER = "smtp.mail.yahoo.com"
 
-SMTP_YAHOO = "smtp.mail.yahoo.com"
+YAHOO_IMAP_SERVER = "imap.mail.yahoo.com"
+
+DEFAULT_ROW_START = 17
