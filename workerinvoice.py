@@ -4,6 +4,7 @@ import getpass
 import constants
 import tools
 import os
+from framework import imageReader, InvoiceReader, InvoiceWriter
 
 def main():
     
@@ -70,7 +71,14 @@ def main():
     invoiceWriter.writeTotal(total, constants.DANNY_TOTAL_ROW)
     invoiceWriter.finalize(save_path)
     
+    os.popen("open " + constants.RECENT_INVOICE_FILE_PATH))
 
+    input("\nMake final adjustments; enter anything to send ")
+
+    email = SMTPEmailer(constants.DEFAULT_SENDER, password, constants.YAHOO_SMTP_SERVER)
+    email.sendattachment(os.path.basename(save_path), constants.DEFAULT_SENDER, save_path)
+    email.sendattachment(os.path.basename(save_path), constants.DEFAULT_SENDER, save_path)
+    print("Finished!")
 
 if __name__ == '__main__':
     main()
