@@ -1,6 +1,6 @@
 DANNY_FOLDER_PATH = "/Users/Pey/Documents/redline/Danny"
 
-SAMPLE_FILE_PATH = "/Users/Pey/Documents/redline/Danny/sampleDanny.xlsx"
+SAMPLE_FILE_PATH = "/Users/Pey/Documents/redline/Danny/sample.xlsx"
 
 SETTLEMENT_FILE_PATH = "/Users/Pey/Documents/redline/recent_invoice.xls"
 
