@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import emailer
 import getpass
 import constants
 import tools
@@ -37,8 +38,8 @@ def main():
     invoiceWriter.writeInvoiceNumber(new_invoice_num)
 
     password = getpass.getpass("Password For {}: ".format(user))
-    email = IMAPEmailer(user, password, constants.YAHOO_IMAP_SERVER)
-    email.retrieveMostRecentFileWithExt(constants.DEFAULT_EXTENTION, constants.SETTLEMENT_FILE_PATH, constants.DEFAULT_PERSON)
+    email = emailer.IMAPEmailer(user, password, constants.YAHOO_IMAP_SERVER)
+    email.retrieveMostRecentFileWithExt(constants.DEFAULT_EXTENSION, constants.SETTLEMENT_FILE_PATH, constants.DEFAULT_PERSON)
     print("\nChange extension to xlsx\n")
     os.popen("open {}".format(constants.SETTLEMENT_FILE_PATH))
     input("\nEnter any key after changing extension\n")
@@ -75,7 +76,7 @@ def main():
 
     input("\nMake final adjustments; enter anything to send ")
 
-    email = SMTPEmailer(constants.DEFAULT_SENDER, password, constants.YAHOO_SMTP_SERVER)
+    email = emailer.SMTPEmailer(constants.DEFAULT_SENDER, password, constants.YAHOO_SMTP_SERVER)
     email.sendattachment(os.path.basename(save_path), constants.DEFAULT_SENDER, save_path)
     email.sendattachment(os.path.basename(save_path), constants.DEFAULT_SENDER, save_path)
     print("Finished!")
