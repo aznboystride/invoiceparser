@@ -30,7 +30,7 @@ def main():
 
     save_path = os.path.join(constants.DANNY_FOLDER_PATH, "invoice" + new_invoice_num + ".xlsx")
  
-    imageReader = ImageReader(pathToImage, psm)
+    imageReader = ImageReader(file, psm)
 
     invoiceWriter = InvoiceWriter(constants.SAMPLE_FILE_PATH)
     invoiceWriter.writeInvoiceDateCreation(input("\nCreation Date: "))
