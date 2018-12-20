@@ -4,7 +4,7 @@ import getpass
 import constants
 import tools
 import os
-from framework import imageReader, InvoiceReader, InvoiceWriter
+from framework import ImageReader, InvoiceReader, InvoiceWriter
 
 def main():
     
@@ -71,7 +71,7 @@ def main():
     invoiceWriter.writeTotal(total, constants.DANNY_TOTAL_ROW)
     invoiceWriter.finalize(save_path)
     
-    os.popen("open " + constants.RECENT_INVOICE_FILE_PATH))
+    os.popen("open " + constants.RECENT_INVOICE_FILE_PATH)
 
     input("\nMake final adjustments; enter anything to send ")
 
