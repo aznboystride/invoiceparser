@@ -55,9 +55,20 @@ def main():
 
     total = 0
 
+    notfound = list()
+
     for job in jobs:
         info = invoiceReader.getInfoDictionary(job)
-         
+        if info['amt'] == None:
+            info = invoiceReader.getInfoDictionary(input("\nFound job {}; enter correction: ".format(job)))
+        if info['amt'] == None:
+            notfound.append(job)
+            continue
+        total += float(info['amt'])
+        row += 2
+
+    invoiceWriter.writeTotal(total, constants.DANNY_TOTAL_ROW)
+    invoiceWriter.finalize(save_path)
     
 
 

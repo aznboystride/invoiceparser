@@ -17,3 +17,5 @@ YAHOO_SMTP_SERVER = "smtp.mail.yahoo.com"
 YAHOO_IMAP_SERVER = "imap.mail.yahoo.com"
 
 DEFAULT_ROW_START = 17
+
+DANNY_TOTAL_ROW = 176
