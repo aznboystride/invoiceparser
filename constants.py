@@ -6,6 +6,8 @@ SETTLEMENT_FILE_PATH = "/Users/Pey/Documents/redline/recent_invoice.xls"
 
 RECENT_INVOICE_FILE_PATH = "/Users/Pey/Documents/redline/recent_invoice.xlsx"
 
+DEFAULT_EXTENSION = ".xls"
+
 DEFAULT_RECEIVER = "4g63t.redline@gmail.com"
 
 DEFAULT_PERSON = "fritz bugay"
