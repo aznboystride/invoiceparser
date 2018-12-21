@@ -74,6 +74,12 @@ class InvoiceWriter(object):
                 self.jobFont = copy(self.sheet['b18'].font)
                 self.jobAlignment = copy(self.sheet['b18'].alignment)
 
+        def deleteBlankRows(self, totalrow):
+                for row in range(16, self.sheet.max_row + 1):
+                        if self.sheet.cell(row=row, column=0).value is None:
+                                self.sheet.delete_rows(row, totalrow-1)
+                                break
+
         def writeJob(self, row, date, trackID, job, fr, to, price):
 
                # day = int(date[date.find('/') + 1 : date.find('/', date.find('/') + 1)])
