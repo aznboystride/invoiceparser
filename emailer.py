@@ -32,8 +32,10 @@ class IMAPEmailer:
                     with open(path, 'wb') as fp:
                         fp.write(part.get_payload(decode=True))
                         return path
+    def close():
+        self.connection.close()
 
-        return Nonee
+        return None
 
 class SMTPEmailer:
 
@@ -68,6 +70,8 @@ class SMTPEmailer:
 
         self.smtp.sendmail(self.email, to, msg.as_string())
 
+    def close():
+        self.smtp.close()
 def main():
     pass
 
