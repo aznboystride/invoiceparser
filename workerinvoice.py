@@ -5,6 +5,7 @@ import getpass
 import constants
 import tools
 import os
+import time
 from framework import ImageReader, InvoiceReader, InvoiceWriter
 
 def getJobNum(s):
@@ -12,7 +13,8 @@ def getJobNum(s):
     return s[left:right]
 
 def main():
-    
+    start = time.time()
+
     parser = argparse.ArgumentParser(description="Automate Invoice")
     parser.add_argument("-f", "--file", type=str, required=True, metavar="", help="Image Path")
     parser.add_argument("-r", "--receiver", type=str, required=False, metavar="", help="Email receiver")
@@ -88,7 +90,7 @@ def main():
     email.sendattachment(os.path.basename(save_path), constants.DEFAULT_RECEIVER, save_path)
     print("\nSent {} with subject {} to {}\n".format(save_path, os.path.basename(save_path), constants.DEFAULT_RECEIVER))
     email.close()
-
+    print("\nFinished Job in ######### -> {:.2f} seconds\n".format(time.time()-start))
 if __name__ == '__main__':
     main()
 
