@@ -79,6 +79,7 @@ def main():
         row += 2
 
     invoiceWriter.writeTotal(total, constants.DANNY_TOTAL_ROW)
+    invoiceWriter.deleteBlankRows(constants.DANNY_TOTAL_ROW)
     invoiceWriter.finalize(save_path)
     
     os.popen("open " + constants.RECENT_INVOICE_FILE_PATH)

@@ -76,8 +76,8 @@ class InvoiceWriter(object):
 
         def deleteBlankRows(self, totalrow):
                 for row in range(16, self.sheet.max_row + 1):
-                        if self.sheet.cell(row=row, column=0).value is None:
-                                self.sheet.delete_rows(row, totalrow-1)
+                        if self.sheet.cell(row=row, column=1).value is None:
+                                self.sheet.delete_rows(row, totalrow-row)
                                 break
 
         def writeJob(self, row, date, trackID, job, fr, to, price):
