@@ -167,32 +167,44 @@ class InvoiceReader(object):
 
         def getDateGivenJobNum(self, job):
                 for row in range(3, self.sheet.max_row + 1):
-                        if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
-                                return self.sheet.cell(row=row, column=self.dateColumn).value
-
+                        try:
+                                if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
+                                        return self.sheet.cell(row=row, column=self.dateColumn).value
+                        except:
+                                break
         def getTrackIDGivenJobNum(self, job):
                 for row in range(3, self.sheet.max_row + 1):
-                        if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
-                                return self.sheet.cell(row=row, column=self.trackIDColumn).value
-
+                        try:
+                                if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
+                                        return self.sheet.cell(row=row, column=self.trackIDColumn).value
+                        except:
+                                break
         def getJobGivenJobNum(self, job):
                 for row in range(3, self.sheet.max_row + 1):
-                        if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
-                                return self.sheet.cell(row=row, column=self.jobColumn).value
-
+                        try:
+                                if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
+                                        return self.sheet.cell(row=row, column=self.jobColumn).value
+                        except:
+                                break
 
         def getFromGivenJobNum(self, job):
                 for row in range(3, self.sheet.max_row + 1):
-                        if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
-                                return self.sheet.cell(row=row, column=self.fromColumn).value
-
+                        try:
+                                if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
+                                        return self.sheet.cell(row=row, column=self.fromColumn).value
+                        except:
+                                break
         def getToGivenJobNum(self, job):
                 for row in range(3, self.sheet.max_row + 1):
-                        if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
-                                return self.sheet.cell(row=row, column=self.toColumn).value
-
+                        try:
+                                if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
+                                        return self.sheet.cell(row=row, column=self.toColumn).value
+                        except:
+                                break
         def getAmtGivenJobNum(self, job):
                 for row in range(3, self.sheet.max_row + 1):
-                        if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
-                                return self.sheet.cell(row=row, column=self.amtColumn).value
-
+                        try:
+                                if str(job) in self.sheet.cell(row=row, column=self.jobColumn).value:
+                                        return self.sheet.cell(row=row, column=self.amtColumn).value
+                        except:
+                                break

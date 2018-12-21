@@ -6,6 +6,7 @@ import constants
 import tools
 import os
 import time
+import xml2xlsx
 from framework import ImageReader, InvoiceReader, InvoiceWriter
 
 def getJobNum(s):
@@ -45,11 +46,11 @@ def main():
 
     password = getpass.getpass("Password For {}: ".format(user))
     email = emailer.IMAPEmailer(user, password, constants.YAHOO_IMAP_SERVER)
+    print("\nRetrieving settlement file from email list\n")
     email.retrieveMostRecentFileWithExt(constants.DEFAULT_EXTENSION, constants.SETTLEMENT_FILE_PATH, constants.DEFAULT_PERSON)
     email.close()
-    print("\nChange extension to xlsx\n")
-    os.popen("open {}".format(constants.SETTLEMENT_FILE_PATH))
-    input("\nEnter any key after changing extension")
+    print("\nChanging extention from xml to xlsx\n")
+    xml2xlsx.xml2xlsx(constants.SETTLEMENT_FILE_PATH, constants.RECENT_INVOICE_FILE_PATH)
 
     invoiceReader = InvoiceReader(constants.RECENT_INVOICE_FILE_PATH)
 
