@@ -7,6 +7,10 @@ import tools
 import os
 from framework import ImageReader, InvoiceReader, InvoiceWriter
 
+def getJobNum(s):
+    left, right = s.index("#") + 2, s.find("=", s.index('#'))-1
+    return s[left:right]
+
 def main():
     
     parser = argparse.ArgumentParser(description="Automate Invoice")
@@ -60,11 +64,11 @@ def main():
     notfound = list()
 
     for job in jobs:
-        info = invoiceReader.getInfoDictionary(job)
+        info = invoiceReader.getInfoDictionary(getJobNum(job))
         if info['amt'] == None:
-            info = invoiceReader.getInfoDictionary(input("\nFound job {}; enter correction: ".format(job)))
+            info = invoiceReader.getInfoDictionary(input("\nFound job {}; enter correction: ".format((getJobNum(job))))
         if info['amt'] == None:
-            notfound.append(job)
+            notfound.append(getJobNum(job))
             continue
         total += float(info['amt'])
         row += 2
