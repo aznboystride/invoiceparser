@@ -84,9 +84,10 @@ def main():
 
     email = emailer.SMTPEmailer(constants.DEFAULT_SENDER, password, constants.YAHOO_SMTP_SERVER)
     email.sendattachment(os.path.basename(save_path), constants.DEFAULT_SENDER, save_path)
-    email.sendattachment(os.path.basename(save_path), constants.DEFAULT_SENDER, save_path)
+    print("\nSent {} with subject {} to {}\n".format(save_path, os.path.basename(save_path), constants.DEFAULT_SENDER))
+    email.sendattachment(os.path.basename(save_path), constants.DEFAULT_RECEIVER, save_path)
+    print("\nSent {} with subject {} to {}\n".format(save_path, os.path.basename(save_path), constants.DEFAULT_RECEIVER))
     email.close()
-    print("Finished!")
 
 if __name__ == '__main__':
     main()
