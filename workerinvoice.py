@@ -79,7 +79,7 @@ def main():
     invoiceWriter.finalize(save_path)
     
     os.popen("open " + constants.RECENT_INVOICE_FILE_PATH)
-
+    os.popen("open " + save_path)
     input("\nMake final adjustments; enter anything to send ")
 
     email = emailer.SMTPEmailer(constants.DEFAULT_SENDER, password, constants.YAHOO_SMTP_SERVER)
