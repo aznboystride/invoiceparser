@@ -71,6 +71,7 @@ def main():
             notfound.append(getJobNum(job))
             continue
         total += float(info['amt'])
+        invoiceWriter.writeJob(row, info['date'], info['trackID'], info['job'], info['from'], info['to'], info['amt'])
         row += 2
 
     invoiceWriter.writeTotal(total, constants.DANNY_TOTAL_ROW)
