@@ -49,13 +49,13 @@ def main():
     email.close()
     print("\nChange extension to xlsx\n")
     os.popen("open {}".format(constants.SETTLEMENT_FILE_PATH))
-    input("\nEnter any key after changing extension\n")
+    input("\nEnter any key after changing extension")
 
     invoiceReader = InvoiceReader(constants.RECENT_INVOICE_FILE_PATH)
 
     jobs = imageReader.getSanitizeStringFromImage()
 
-    ans = input("\nFound # Of Jobs: {} (y/n)".format(len(jobs)))
+    ans = input("\nFound # Of Jobs: {} (y/n) ".format(len(jobs)))
     
     if ans.lower() != 'y':
         exit(1)
@@ -82,6 +82,12 @@ def main():
     
     os.popen("open " + constants.RECENT_INVOICE_FILE_PATH)
     os.popen("open " + save_path)
+    
+    if len(notfound) > 0:
+        print("\nJobs not in settlement {}:\n".format(len(notfound)))
+        for job in notfound:
+            print("\n{}\n".format(job))
+    
     input("\nMake final adjustments; enter anything to send ")
 
     email = emailer.SMTPEmailer(constants.DEFAULT_SENDER, password, constants.YAHOO_SMTP_SERVER)
@@ -90,6 +96,7 @@ def main():
     email.sendattachment(os.path.basename(save_path), receiver, save_path)
     print("\nSent {} with subject {} to {}\n".format(save_path, os.path.basename(save_path), receiver))
     email.close()
+
     print("\nFinished Job in ######### -> {:.2f} seconds\n".format(time.time()-start))
 if __name__ == '__main__':
     main()
