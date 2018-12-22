@@ -78,6 +78,7 @@ class InvoiceWriter(object):
                 for row in range(16, self.sheet.max_row + 1):
                         if self.sheet.cell(row=row, column=1).value is None:
                                 self.sheet.delete_rows(row, totalrow-row)
+                                self.sheet.merge_cells(start_row=totalrow+3, start_column=1, end_row=totalrow+3, end_column=7)
                                 break
 
         def writeJob(self, row, date, trackID, job, fr, to, price):
