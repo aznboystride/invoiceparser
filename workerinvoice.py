@@ -7,6 +7,7 @@ import tools
 import os
 import time
 import xml2xlsx
+import datetime
 from framework import ImageReader, InvoiceReader, InvoiceWriter
 
 def getJobNum(s):
@@ -41,7 +42,7 @@ def main():
     imageReader = ImageReader(file, psm)
 
     invoiceWriter = InvoiceWriter(constants.SAMPLE_FILE_PATH)
-    invoiceWriter.writeInvoiceDateCreation(input("\nCreation Date: "))
+    invoiceWriter.writeInvoiceDateCreation(datetime.datetime.now().strftime('%B' '%d' '%Y'))
     invoiceWriter.writeInvoiceNumber(new_invoice_num)
 
     password = getpass.getpass("Password For {}: ".format(user))
