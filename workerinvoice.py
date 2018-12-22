@@ -42,7 +42,7 @@ def main():
     imageReader = ImageReader(file, psm)
 
     invoiceWriter = InvoiceWriter(constants.SAMPLE_FILE_PATH)
-    invoiceWriter.writeInvoiceDateCreation(datetime.datetime.now().strftime('%B' '%d' '%Y'))
+    invoiceWriter.writeInvoiceDateCreation(datetime.datetime.now().strftime("%B %d %Y"))
     invoiceWriter.writeInvoiceNumber(new_invoice_num)
 
     password = getpass.getpass("Password For {}: ".format(user))
