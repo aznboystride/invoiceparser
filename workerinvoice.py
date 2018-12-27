@@ -93,7 +93,7 @@ def main():
     
     input("\nMake final adjustments; enter anything to send ")
 
-    email = emailer.SMTPEmailer(constants.DEFAULT_SENDER, password, constants.YAHOO_SMTP_SERVER)
+    email = emailer.SMTPEmailer(user, password, constants.YAHOO_SMTP_SERVER)
     email.sendattachment(os.path.basename(save_path), user, save_path)
     print("\nSent {} with subject {} to {}\n".format(save_path, os.path.basename(save_path), user))
     email.sendattachment(os.path.basename(save_path), receiver, save_path)
