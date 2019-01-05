@@ -5,6 +5,7 @@ import getpass
 import constants
 import tools
 import os
+import sys
 import time
 import xml2xlsx
 import datetime
@@ -82,9 +83,13 @@ def main():
     invoiceWriter.writeTotal(total, constants.DANNY_TOTAL_ROW)
     invoiceWriter.deleteBlankRows(constants.DANNY_TOTAL_ROW)
     invoiceWriter.finalize(save_path)
-    
-    os.popen("open " + constants.RECENT_INVOICE_FILE_PATH)
-    os.popen("open " + save_path)
+   
+    if sys.platform == 'win32':
+        os.startfile(constants.RECENT_INVOICE_FILE_PATH)
+        os.startfile(save_path)
+    else:
+        os.popen("open " + constants.RECENT_INVOICE_FILE_PATH)
+        os.popen("open " + save_path)
     
     if len(notfound) > 0:
         print("\nJobs not in settlement {}:\n".format(len(notfound)))
