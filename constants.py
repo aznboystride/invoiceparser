@@ -1,10 +1,10 @@
-DANNY_FOLDER_PATH = "/Users/Pey/Documents/redline/Danny"
+DANNY_FOLDER_PATH = "C:\\Users\\peynu\\Documents\\redline\\Danny"
 
-SAMPLE_FILE_PATH = "/Users/Pey/Documents/redline/Danny/sample.xlsx"
+SAMPLE_FILE_PATH = "C:\\Users\\peynu\\Documents\\redline\\Danny\\sample.xlsx"
 
-SETTLEMENT_FILE_PATH = "/Users/Pey/Documents/redline/recent_invoice.xls"
+SETTLEMENT_FILE_PATH = "C:\\Users\\peynu\\Documents\\redline\\recent_invoice.xls"
 
-RECENT_INVOICE_FILE_PATH = "/Users/Pey/Documents/redline/recent_invoice.xlsx"
+RECENT_INVOICE_FILE_PATH = "C:\\Users\\peynu\\Documents\\redline\\recent_invoice.xlsx"
 
 DEFAULT_EXTENSION = ".xls"
 

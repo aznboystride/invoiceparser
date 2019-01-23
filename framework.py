@@ -7,6 +7,7 @@ from copy import copy
 class ImageReader(object):
 
         def __init__(self, path, psm=None):
+                pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe"
                 self.image = Image.open(path)
                 if psm == None:
                         self.string = pytesseract.image_to_string(self.image) # ,config='--psm 6')

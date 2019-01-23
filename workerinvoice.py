@@ -72,7 +72,7 @@ def main():
     for job in jobs:
         info = invoiceReader.getInfoDictionary(getJobNum(job))
         if info['amt'] == None:
-            info = invoiceReader.getInfoDictionary(input("\nFound job {}; enter correction: ".format((getJobNum(job)))))
+            info = invoiceReader.getInfoDictionary(input("\nFound job {}; enter correction: ".format(job)))
         if info['amt'] == None:
             notfound.append(getJobNum(job))
             continue

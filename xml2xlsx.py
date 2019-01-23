@@ -20,7 +20,7 @@ def xml2xlsx(xmlfile, savepath):
 	wb.save(savepath)
 
 def main():
-	xml2xlsx("/Users/Pey/Documents/redline/recent_invoice.xls", "/Users/Pey/Documents/redline/test.xlsx")
+    xml2xlsx("C:\\Users\\peynu\\Documents\\redline\\recent_invoice.xls", "C:\\Users\\peynu\\Documents\\redline\\test.xlsx")
 
 if __name__ == '__main__':
 	main()
