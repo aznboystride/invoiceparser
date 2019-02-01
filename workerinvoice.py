@@ -5,15 +5,15 @@ import getpass
 import constants
 import tools
 import os
-import sys
 import time
 import xml2xlsx
 import datetime
+import re
 from framework import ImageReader, InvoiceReader, InvoiceWriter
 
 def getJobNum(s):
-    left, right = s.index("#") + 2, s.find("=", s.index('#'))-1
-    return s[left:right]
+    res = re.findall(r'\d\d\d\d\d\d\d', s)
+    return res[0]
 
 def main():
     start = time.time()
@@ -83,13 +83,9 @@ def main():
     invoiceWriter.writeTotal(total, constants.DANNY_TOTAL_ROW)
     invoiceWriter.deleteBlankRows(constants.DANNY_TOTAL_ROW)
     invoiceWriter.finalize(save_path)
-   
-    if sys.platform == 'win32':
-        os.startfile(constants.RECENT_INVOICE_FILE_PATH)
-        os.startfile(save_path)
-    else:
-        os.popen("open " + constants.RECENT_INVOICE_FILE_PATH)
-        os.popen("open " + save_path)
+    
+    os.popen("open " + constants.RECENT_INVOICE_FILE_PATH)
+    os.popen("open " + save_path)
     
     if len(notfound) > 0:
         print("\nJobs not in settlement {}:\n".format(len(notfound)))
@@ -98,7 +94,7 @@ def main():
     
     input("\nMake final adjustments; enter anything to send ")
 
-    email = emailer.SMTPEmailer(user, password, constants.YAHOO_SMTP_SERVER)
+    email = emailer.SMTPEmailer(constants.DEFAULT_SENDER, password, constants.YAHOO_SMTP_SERVER)
     email.sendattachment(os.path.basename(save_path), user, save_path)
     print("\nSent {} with subject {} to {}\n".format(save_path, os.path.basename(save_path), user))
     email.sendattachment(os.path.basename(save_path), receiver, save_path)
