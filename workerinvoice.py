@@ -9,11 +9,12 @@ import time
 import xml2xlsx
 import datetime
 import re
-from framework import ImageReader, InvoiceReader, InvoiceWriter
+from framework import InvoiceReader, InvoiceWriter
 
-def getJobNum(s):
-    res = re.findall(r'\d\d\d\d\d\d\d', s)
-    return res[0]
+def ImageToString(file):
+    import pytesseract as pyt
+    from PIL import Image as im
+    return pyt.image_to_string(im.open(file), config='--psm 6')
 
 def main():
     start = time.time()
@@ -40,8 +41,6 @@ def main():
 
     save_path = os.path.join(constants.DANNY_FOLDER_PATH, "invoice" + new_invoice_num + ".xlsx")
  
-    imageReader = ImageReader(file, psm)
-
     invoiceWriter = InvoiceWriter(constants.SAMPLE_FILE_PATH)
     invoiceWriter.writeInvoiceDateCreation(datetime.datetime.now().strftime("%B %d %Y"))
     invoiceWriter.writeInvoiceNumber(new_invoice_num)
@@ -56,7 +55,7 @@ def main():
 
     invoiceReader = InvoiceReader(constants.RECENT_INVOICE_FILE_PATH)
 
-    jobs = imageReader.getSanitizeStringFromImage()
+    jobs = re.findall(r'\d\d\d\d\d\d\d', ImageToString(file))
 
     ans = input("\nFound # Of Jobs: {} (y/n) ".format(len(jobs)))
     
@@ -70,11 +69,11 @@ def main():
     notfound = list()
 
     for job in jobs:
-        info = invoiceReader.getInfoDictionary(getJobNum(job))
+        info = invoiceReader.getInfoDictionary(job)
         if info['amt'] == None:
             info = invoiceReader.getInfoDictionary(input("\nFound job {}; enter correction: ".format(job)))
         if info['amt'] == None:
-            notfound.append(getJobNum(job))
+            notfound.append(job)
             continue
         total += float(info['amt'])
         invoiceWriter.writeJob(row, info['date'], info['trackID'], info['job'], info['from'], info['to'], info['amt'])
