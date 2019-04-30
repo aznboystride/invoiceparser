@@ -8,11 +8,11 @@ RECENT_INVOICE_FILE_PATH = "C:\\Users\\peynu\\Documents\\redline\\recent_invoice
 
 DEFAULT_EXTENSION = ".xls"
 
-DEFAULT_RECEIVER = "4g63t.redline@gmail.com"
+DEFAULT_RECEIVER = "client_email"
 
-DEFAULT_PERSON = "fritz bugay"
+DEFAULT_PERSON = "client_name"
 
-DEFAULT_SENDER = "peynuri@yahoo.com"
+DEFAULT_SENDER = "my_email"
 
 YAHOO_SMTP_SERVER = "smtp.mail.yahoo.com"
 
